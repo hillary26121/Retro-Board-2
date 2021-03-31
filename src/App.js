@@ -1,24 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import MediaCards from './components/media-cards'
+import ListCards from './components/list-cards'
+import {useState} from 'react';
+
 
 function App() {
+  const [listCards, setListCards] = useState([{
+    item : 'go grocery shopping'
+  },
+  {
+    item: 'pooped'
+  }])
+
+  const newListCards = (index, title) =>{
+    const renderedListCards = [...listCards];
+    renderedListCards[index] = {
+      title: title
+    }
+  }
+  // const [wentWell, setWentWell] = useState({});
+  // const [toImprove, setToImprove] = useState({});
+  // const [actionItems, setActionItems] = useState({});
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id = 'layout'>
+      <h1>Retro Board</h1>
+      <MediaCards>
+      <ListCards/>
+      </MediaCards>
     </div>
+    
+    
   );
 }
 
