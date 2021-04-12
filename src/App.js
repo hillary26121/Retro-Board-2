@@ -7,14 +7,17 @@ function App() {
  
 
   const [listCards, setListCards] = useState([
-    {userInput: "hello", likes: 0, dislikes: 0, category: "went-well"},
+    {id: 0, userInput: "hello", likes: 0, dislikes: 0, category: "went-well"},
   ]);
   const [likes, setLikes] = useState(0);
+  const [userInput, setUserInput] = useState('');
 
   const addListCard = (e) => {
+    setLikes(likes+1)
     setListCards([
       ...listCards,
       {
+        id: 0,
         userInput: "",
         likes: 0,
         dilikes: 0,
@@ -65,6 +68,7 @@ function App() {
                 userInput={listCard.userInput}
                 likes={listCard.likes}
                 dislikes={listCard.dislikes}
+                id = {index}
                 addListCard={addListCard}
                 deleteItem={deleteItem}
                 setLikes = {setLikes}
