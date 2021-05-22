@@ -2,10 +2,9 @@ import React from "react";
 import { useState } from 'react';
 
 function ListCards(props) {
-    const {listCards, likes, setLikes} = props;
-    
-    
-    
+    const {listCards, likes, setLikes, deleteItem, index} = props;
+    const [userInput, setUserInput] = useState('');
+  
  return (
 
     <div>
@@ -15,14 +14,15 @@ function ListCards(props) {
           placeholder="Enter text here"
           aria-label="Enter text here"
           rows="1"
-          value={props.userInput}
+          value={userInput}
+          onChange = {(e)=>{setUserInput(e.target.value)}}
         ></textarea>
 
         <div class="button-group">
           <button type="button" class="button button-left" title="Move left">
             <img src="angleLeft.svg" alt="Move left" width="12" height="12" />
           </button>
-          <button type="button" class="button button-delete" title="Delete" onClick = {props.deleteItem()} >
+          <button type="button" class="button button-delete" title="Delete" onClick = {()=>props.deleteItem(index)} >
             Delete
           </button>
           <div>

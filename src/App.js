@@ -10,7 +10,7 @@ function App() {
     {id: 0, userInput: "hello", likes: 0, dislikes: 0, category: "went-well"},
   ]);
   const [likes, setLikes] = useState(0);
-  const [userInput, setUserInput] = useState('');
+  const [category, setCategory] = useState('');
 
   const addListCard = (e) => {
     setLikes(likes+1)
@@ -27,10 +27,10 @@ function App() {
    
   };
   
-  function deleteItem() {
-  /*  setListCards(
+  function deleteItem(index) {
+   setListCards(
       listCards.filter((currItem, currIndex) => currIndex !== index)
-    );*/
+    );
   }
 
   
@@ -68,11 +68,11 @@ function App() {
                 userInput={listCard.userInput}
                 likes={listCard.likes}
                 dislikes={listCard.dislikes}
-                id = {index}
+                index = {index}
                 addListCard={addListCard}
                 deleteItem={deleteItem}
                 setLikes = {setLikes}
-                likes = {likes}
+                likes = {likes} 
                 
                
         
@@ -97,10 +97,11 @@ function App() {
           {listCards
             .filter((listCard) => listCard.category === 'to-improve')
 
-            .map((listCard) => {
+            .map((listCard, index) => {
               return <ListCards
                 userInput={listCard.userInput}
                 likes={listCard.likes}
+                index = {index}
                 dislikes={listCard.dislikes}
                 addListCard={addListCard}
                 deleteItem = {deleteItem}
@@ -125,11 +126,12 @@ function App() {
           {listCards
             .filter((listCard) => listCard.category === 'action-items')
 
-            .map((listCard) => {
+            .map((listCard, index) => {
               return <ListCards
                 userInput={listCard.userInput}
                 likes={listCard.likes}
                 dislikes={listCard.dislikes}
+                index = {index}
                 addListCard={addListCard}
                 deleteItem = {deleteItem}
                 setLikes = {setLikes}
