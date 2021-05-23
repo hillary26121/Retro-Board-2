@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from 'react';
 
 function ListCards(props) {
-    const {listCards, likes, setLikes, deleteItem, index} = props;
+    const {listCards, likes, setLikes, deleteItem, index, moveLeft} = props;
     const [userInput, setUserInput] = useState('');
   
  return (
@@ -19,7 +19,7 @@ function ListCards(props) {
         ></textarea>
 
         <div class="button-group">
-          <button type="button" class="button button-left" title="Move left">
+          <button type="button" class="button button-left" title="Move left" onClick = {()=> props.moveLeft(index)}>
             <img src="angleLeft.svg" alt="Move left" width="12" height="12" />
           </button>
           <button type="button" class="button button-delete" title="Delete" onClick = {()=>props.deleteItem(index)} >
@@ -39,6 +39,7 @@ function ListCards(props) {
               Dislike
             </button>
             <button
+              onClick = {()=> props.moveRight(index)}
               value={props.dislikes}
               type="button"
               class="button button-right"

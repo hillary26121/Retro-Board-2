@@ -3,17 +3,13 @@ import ListCards from "./components/list-cards";
 import { useState } from "react";
 
 function App() {
-
- 
-
   const [listCards, setListCards] = useState([
-    {id: 0, userInput: "hello", likes: 0, dislikes: 0, category: "went-well"},
+    { id: 0, userInput: "hello", likes: 0, dislikes: 0, category: "went-well" },
   ]);
   const [likes, setLikes] = useState(0);
-  const [category, setCategory] = useState('');
 
   const addListCard = (e) => {
-    setLikes(likes+1)
+    setLikes(likes + 1);
     setListCards([
       ...listCards,
       {
@@ -24,20 +20,56 @@ function App() {
         category: e.target.attributes.category.value,
       },
     ]);
-   
   };
-  
+
   function deleteItem(index) {
-   setListCards(
+    setListCards(
       listCards.filter((currItem, currIndex) => currIndex !== index)
     );
   }
 
-  
+  function moveLeft(index){
+    console.log(index);
+    console.log(listCards[index].category)
+    if(listCards[index].category === 'went-well' ){
+      listCards[index].category = 'action-items';
 
+    setListCards([
+      ...listCards,
+      
+      
+    ]);
 
+    } else if (listCards[index].category === 'to-improve'){
+      listCards[index].category = 'went-well';
+      setListCards([...listCards])
+    } else if (listCards[index].category === 'action-items'){
+      listCards[index].category = 'to-improve';
+      setListCards([...listCards])
+    }
+  }
 
- 
+  function moveRight(index){
+    console.log(index);
+    console.log(listCards[index].category)
+    if(listCards[index].category === 'went-well' ){
+      listCards[index].category = 'to-improve';
+
+    setListCards([
+      ...listCards,
+      
+      
+    ]);
+
+    } else if (listCards[index].category === 'to-improve'){
+      listCards[index].category = 'action-items';
+      setListCards([...listCards])
+    } else if (listCards[index].category === 'action-items'){
+      listCards[index].category = 'went-well';
+      setListCards([...listCards])
+    }
+  }
+
   return (
     <main class="content row">
       <h1>Retro Board</h1>
@@ -47,9 +79,8 @@ function App() {
 
       <div class="RetroApp row">
         <div class="RetroCategory RetroCategory-1">
-          
           <h2>Went Well</h2>
-         
+
           <button
             onClick={addListCard}
             category={"went-well"}
@@ -60,27 +91,25 @@ function App() {
           >
             +
           </button>
-          {listCards
-            .filter((listCard) => listCard.category === 'went-well')
-
-            .map((listCard, index) => {
-              return <ListCards
-                userInput={listCard.userInput}
-                likes={listCard.likes}
-                dislikes={listCard.dislikes}
-                index = {index}
-                addListCard={addListCard}
-                deleteItem={deleteItem}
-                setLikes = {setLikes}
-                likes = {likes} 
-                
-               
-        
-              />;
-            })}
-            
+          {listCards.map((listCard, index) => {
+            if (listCard.category === "went-well") {
+              return (
+                <ListCards
+                  userInput={listCard.userInput}
+                  likes={listCard.likes}
+                  dislikes={listCard.dislikes}
+                  index={index}
+                  addListCard={addListCard}
+                  deleteItem={deleteItem}
+                  setLikes={setLikes}
+                  likes={likes}
+                  moveLeft = {moveLeft}
+                  moveRight = {moveRight}
+                />
+              );
+            }
+          })}
         </div>
-        
 
         <div class="RetroCategory RetroCategory-2">
           <h2>To Improve</h2>
@@ -94,21 +123,24 @@ function App() {
           >
             +
           </button>
-          {listCards
-            .filter((listCard) => listCard.category === 'to-improve')
-
-            .map((listCard, index) => {
-              return <ListCards
-                userInput={listCard.userInput}
-                likes={listCard.likes}
-                index = {index}
-                dislikes={listCard.dislikes}
-                addListCard={addListCard}
-                deleteItem = {deleteItem}
-                setLikes = {setLikes}
-                likes = {likes}
-              />;
-            })}
+          {listCards.map((listCard, index) => {
+            if (listCard.category === "to-improve") {
+              return (
+                <ListCards
+                  userInput={listCard.userInput}
+                  likes={listCard.likes}
+                  index={index}
+                  dislikes={listCard.dislikes}
+                  addListCard={addListCard}
+                  deleteItem={deleteItem}
+                  setLikes={setLikes}
+                  likes={likes}
+                  moveLeft = {moveLeft}
+                  moveRight = {moveRight}
+                />
+              );
+            }
+          })}
         </div>
 
         <div class="RetroCategory RetroCategory-3">
@@ -123,21 +155,24 @@ function App() {
           >
             +
           </button>
-          {listCards
-            .filter((listCard) => listCard.category === 'action-items')
-
-            .map((listCard, index) => {
-              return <ListCards
-                userInput={listCard.userInput}
-                likes={listCard.likes}
-                dislikes={listCard.dislikes}
-                index = {index}
-                addListCard={addListCard}
-                deleteItem = {deleteItem}
-                setLikes = {setLikes}
-                likes = {likes}
-              />;
-            })}
+          {listCards.map((listCard, index) => {
+            if (listCard.category === "action-items") {
+              return (
+                <ListCards
+                  userInput={listCard.userInput}
+                  likes={listCard.likes}
+                  dislikes={listCard.dislikes}
+                  index={index}
+                  addListCard={addListCard}
+                  deleteItem={deleteItem}
+                  setLikes={setLikes}
+                  likes={likes}
+                  moveLeft = {moveLeft}
+                  moveRight = {moveRight}
+                />
+              );
+            }
+          })}
         </div>
       </div>
     </main>
