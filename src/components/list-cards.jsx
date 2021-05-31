@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from 'react';
 
 function ListCards(props) {
-    const {listCards, likes, setLikes, deleteItem, index, moveLeft} = props;
+    const {likes, setLikes, index, moveLeft, moveRight, deleteItem, incrementLikes} = props;
     const [userInput, setUserInput] = useState('');
   
  return (
@@ -19,14 +19,14 @@ function ListCards(props) {
         ></textarea>
 
         <div class="button-group">
-          <button type="button" class="button button-left" title="Move left" onClick = {()=> props.moveLeft(index)}>
+          <button type="button" class="button button-left" title="Move left" onClick = {()=> moveLeft(index)}>
             <img src="angleLeft.svg" alt="Move left" width="12" height="12" />
           </button>
-          <button type="button" class="button button-delete" title="Delete" onClick = {()=>props.deleteItem(index)} >
+          <button type="button" class="button button-delete" title="Delete" onClick = {()=> deleteItem(index)} >
             Delete
           </button>
           <div>
-            <button type="button" class="button button-left" title="Like" onClick = {()=>setLikes(likes+1)}>
+            <button type="button" class="button button-left" title="Like" onClick = {()=>incrementLikes(index)}>
               Like {likes}
             </button>
             <button
@@ -36,10 +36,10 @@ function ListCards(props) {
               class="button button-left"
               title="Dislike"
             >
-              Dislike
+              Dislike 
             </button>
             <button
-              onClick = {()=> props.moveRight(index)}
+              onClick = {()=> moveRight(index)}
               value={props.dislikes}
               type="button"
               class="button button-right"

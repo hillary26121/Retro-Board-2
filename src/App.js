@@ -6,10 +6,9 @@ function App() {
   const [listCards, setListCards] = useState([
     { id: 0, userInput: "hello", likes: 0, dislikes: 0, category: "went-well" },
   ]);
-  const [likes, setLikes] = useState(0);
+  // const [likes, setLikes] = useState(0);
 
   const addListCard = (e) => {
-    setLikes(likes + 1);
     setListCards([
       ...listCards,
       {
@@ -29,8 +28,6 @@ function App() {
   }
 
   function moveLeft(index){
-    console.log(index);
-    console.log(listCards[index].category)
     if(listCards[index].category === 'went-well' ){
       listCards[index].category = 'action-items';
 
@@ -39,6 +36,8 @@ function App() {
       
       
     ]);
+
+   
 
     } else if (listCards[index].category === 'to-improve'){
       listCards[index].category = 'went-well';
@@ -68,6 +67,15 @@ function App() {
       listCards[index].category = 'went-well';
       setListCards([...listCards])
     }
+  }
+
+  function incrementLikes(){
+    setListCards([
+      ...listCards,
+    ])
+    listCards.likes += 1;
+    
+    
   }
 
   return (
@@ -101,8 +109,9 @@ function App() {
                   index={index}
                   addListCard={addListCard}
                   deleteItem={deleteItem}
-                  setLikes={setLikes}
-                  likes={likes}
+                  // setLikes={setLikes}
+                  // likes={likes}
+                  incrementLikes = {incrementLikes}
                   moveLeft = {moveLeft}
                   moveRight = {moveRight}
                 />
@@ -133,8 +142,8 @@ function App() {
                   dislikes={listCard.dislikes}
                   addListCard={addListCard}
                   deleteItem={deleteItem}
-                  setLikes={setLikes}
-                  likes={likes}
+                  // setLikes={setLikes}
+                  // likes={likes}
                   moveLeft = {moveLeft}
                   moveRight = {moveRight}
                 />
@@ -165,8 +174,8 @@ function App() {
                   index={index}
                   addListCard={addListCard}
                   deleteItem={deleteItem}
-                  setLikes={setLikes}
-                  likes={likes}
+                  // setLikes={setLikes}
+                  // likes={likes}
                   moveLeft = {moveLeft}
                   moveRight = {moveRight}
                 />
