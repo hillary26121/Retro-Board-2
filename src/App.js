@@ -4,7 +4,7 @@ import { useState } from "react";
 
 function App() {
   const [listCards, setListCards] = useState([
-    { id: 0, userInput: "hello", likes: 0, dislikes: 0, category: "went-well" },
+    { id: 0, userInput: "hello", likes: 0, category: "went-well" },
   ]);
 
   const addListCard = (e) => {
@@ -68,14 +68,16 @@ function App() {
     }
   }
 
-  function incrementLikes(){
+  function incrementLikes(index){
+    listCards[index].likes += 1
     setListCards([
       ...listCards,
     ])
-    listCards.likes += 1;
+    
     
     
   }
+
 
   return (
     <main class="content row">
@@ -137,6 +139,7 @@ function App() {
                   likes={listCard.likes}
                   index={index}
                   dislikes={listCard.dislikes}
+                  incrementLikes = {incrementLikes}
                   addListCard={addListCard}
                   deleteItem={deleteItem}
                   moveLeft = {moveLeft}
@@ -167,6 +170,7 @@ function App() {
                   likes={listCard.likes}
                   dislikes={listCard.dislikes}
                   index={index}
+                  incrementLikes = {incrementLikes}
                   addListCard={addListCard}
                   deleteItem={deleteItem}
                   moveLeft = {moveLeft}

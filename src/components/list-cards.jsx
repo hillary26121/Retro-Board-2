@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from 'react';
 
 function ListCards(props) {
-    const {likes, setLikes, index, moveLeft, moveRight, deleteItem, incrementLikes} = props;
+    const {likes, index, moveLeft, moveRight, deleteItem, incrementLikes} = props;
     const [userInput, setUserInput] = useState('');
   
  return (
@@ -26,18 +26,19 @@ function ListCards(props) {
             Delete
           </button>
           <div>
-            <button type="button" class="button button-left" title="Like" onClick = {()=>incrementLikes()}>
+            <button type="button" class="button button-left" title="Like" onClick = {()=>incrementLikes(index)}>
               Like {likes}
             </button>
-            <button
+            {/* <button
              
               value={props.likes}
               type="button"
               class="button button-left"
               title="Dislike"
+              onClick = {()=>incrementDislikes(index)}
             >
-              Dislike 
-            </button>
+              Dislike {dislikes}
+            </button> */}
             <button
               onClick = {()=> moveRight(index)}
               value={props.dislikes}
