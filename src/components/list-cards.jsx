@@ -26,7 +26,7 @@ function ListCards(props) {
             Delete
           </button>
           <div>
-            <button type="button" class="button button-left" title="Like" onClick = {()=>incrementLikes(index)}>
+            <button type="button" class="button button-left" title="Like" onClick = {()=>incrementLikes()}>
               Like {likes}
             </button>
             <button

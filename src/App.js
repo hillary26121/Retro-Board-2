@@ -6,7 +6,6 @@ function App() {
   const [listCards, setListCards] = useState([
     { id: 0, userInput: "hello", likes: 0, dislikes: 0, category: "went-well" },
   ]);
-  // const [likes, setLikes] = useState(0);
 
   const addListCard = (e) => {
     setListCards([
@@ -109,8 +108,6 @@ function App() {
                   index={index}
                   addListCard={addListCard}
                   deleteItem={deleteItem}
-                  // setLikes={setLikes}
-                  // likes={likes}
                   incrementLikes = {incrementLikes}
                   moveLeft = {moveLeft}
                   moveRight = {moveRight}
@@ -142,8 +139,6 @@ function App() {
                   dislikes={listCard.dislikes}
                   addListCard={addListCard}
                   deleteItem={deleteItem}
-                  // setLikes={setLikes}
-                  // likes={likes}
                   moveLeft = {moveLeft}
                   moveRight = {moveRight}
                 />
@@ -174,8 +169,6 @@ function App() {
                   index={index}
                   addListCard={addListCard}
                   deleteItem={deleteItem}
-                  // setLikes={setLikes}
-                  // likes={likes}
                   moveLeft = {moveLeft}
                   moveRight = {moveRight}
                 />
